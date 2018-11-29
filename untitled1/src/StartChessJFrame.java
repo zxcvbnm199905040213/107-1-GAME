@@ -40,6 +40,11 @@ public class StartChessJFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
     }
+    public static void main(String[] args){
+        StartChessJFrame f=new StartChessJFrame();
+        f.setVisible(true);
+
+    }
 
     private class MyItemListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
@@ -50,12 +55,8 @@ public class StartChessJFrame extends JFrame {
             }
             else if (obj==exitMenuItem||obj==exitButton)
                 System.exit(0);
-            }
         }
-
-    public static void main(String[] args){
-        StartChessJFrame f=new StartChessJFrame();
-        f.setVisible(true);
-
     }
 }
+
+//主視窗面板
