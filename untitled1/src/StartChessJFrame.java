@@ -6,12 +6,13 @@ import javax.swing.*;
 public class StartChessJFrame extends JFrame {
     private ChessBoard chessBoard;
     private JPanel toolbar;
-    private JButton startButton,exitButton;
+    private JButton startButton,exitButton,backButton;
 
     private JMenuBar menuBar;
     private JMenu sysMenu;
     private JMenuItem startMenuItem,exitMenuItem;
     public StartChessJFrame(){
+        this.setResizable(false);
         chessBoard=new ChessBoard();
         Container contentPane=getContentPane();
         contentPane.add(chessBoard);
@@ -28,11 +29,14 @@ public class StartChessJFrame extends JFrame {
         menuBar.add(sysMenu);
         setJMenuBar(menuBar);
         toolbar=new JPanel();
+        backButton=new JButton("悔棋");
         startButton=new JButton("重新开始");
         exitButton=new JButton("退出");
         toolbar.setLayout(new FlowLayout(FlowLayout.LEFT));
+        toolbar.add(backButton);
         toolbar.add(startButton);
         toolbar.add(exitButton);
+        backButton.addActionListener(lis);
         startButton.addActionListener(lis);
         exitButton.addActionListener(lis);
         add(toolbar,BorderLayout.SOUTH);
@@ -46,17 +50,22 @@ public class StartChessJFrame extends JFrame {
 
     }
 
-    private class MyItemListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            Object obj=e.getSource();
-            if(obj==StartChessJFrame.this.startMenuItem||obj==startButton){
+    private class MyItemListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            Object obj = e.getSource();
+            if (obj == StartChessJFrame.this.startMenuItem || obj == startButton) {
                 System.out.println("重新开始");
                 chessBoard.restartGame();
             }
-            else if (obj==exitMenuItem||obj==exitButton)
+            else if (obj == exitMenuItem || obj == exitButton)
                 System.exit(0);
+            else if (obj == backButton) {
+                System.out.println("悔棋");
+                chessBoard.goback();
+            }
         }
     }
 }
+
 
 //主視窗面板
