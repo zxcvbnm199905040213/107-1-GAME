@@ -21,6 +21,7 @@ public class ChessBoard extends JPanel implements MouseListener {
     public static final int ROWS=15;//行數
     public static final int COLS=15;//列數
 
+
     Point[] chessList=new Point[(ROWS+1)*(COLS+1)];
     boolean isBlack=true;//黑棋先
     boolean gameOver=false;//GAME是否结束
@@ -59,6 +60,7 @@ public class ChessBoard extends JPanel implements MouseListener {
     public void paintComponent(Graphics g){
 
         super.paintComponent(g);//畫棋盤
+        setBackground(Color.orange);//背景色橘黄色
 
         int imgWidth= img.getWidth(this);//高
         int imgHeight=img.getHeight(this);//寬
@@ -274,7 +276,21 @@ public class ChessBoard extends JPanel implements MouseListener {
         gameOver=false;
         chessCount =0;
         repaint();
-    }//恢復所有直
+    }//恢復所有值
+
+    public void goback(){
+        if(chessCount==0)
+            return ;
+        chessList[chessCount-1]=null;
+        chessCount--;
+        if(chessCount>0){
+            xIndex=chessList[chessCount-1].getX();
+            yIndex=chessList[chessCount-1].getY();
+        }
+        isBlack=!isBlack;
+        repaint();
+    }//悔棋
+
 
 
     public Dimension getPreferredSize(){
@@ -282,4 +298,3 @@ public class ChessBoard extends JPanel implements MouseListener {
                 +GRID_SPAN*ROWS);
     }//視窗大小
 }
-
