@@ -35,7 +35,7 @@ public class ChessBoard extends JPanel implements MouseListener {
 
         img=Toolkit.getDefaultToolkit().getImage("board.jpg");
         shadows=Toolkit.getDefaultToolkit().getImage("shadows.jpg");
-        //這段抓背景
+//        這段抓背景
 
         addMouseListener(this);
         addMouseMotionListener(new MouseMotionListener(){
