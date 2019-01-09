@@ -19,7 +19,7 @@ public class StartChessJFrame extends JFrame {
         chessBoard.setOpaque(true);
         menuBar =new JMenuBar();
         sysMenu=new JMenu("系统");
-        startMenuItem=new JMenuItem("重新开始");
+        startMenuItem=new JMenuItem("重新開始");
         exitMenuItem =new JMenuItem("退出");
         sysMenu.add(startMenuItem);
         sysMenu.add(exitMenuItem);
@@ -30,7 +30,7 @@ public class StartChessJFrame extends JFrame {
         setJMenuBar(menuBar);
         toolbar=new JPanel();
         backButton=new JButton("悔棋");
-        startButton=new JButton("重新开始");
+        startButton=new JButton("重新開始");
         exitButton=new JButton("退出");
         toolbar.setLayout(new FlowLayout(FlowLayout.LEFT));
         toolbar.add(backButton);
@@ -54,7 +54,7 @@ public class StartChessJFrame extends JFrame {
         public void actionPerformed(ActionEvent e) {
             Object obj = e.getSource();
             if (obj == StartChessJFrame.this.startMenuItem || obj == startButton) {
-                System.out.println("重新开始");
+                System.out.println("重新開始");
                 chessBoard.restartGame();
             }
             else if (obj == exitMenuItem || obj == exitButton)
